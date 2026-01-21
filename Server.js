@@ -1,11 +1,22 @@
-const express = require('express');
-const path = require('path');
+const express = require("express");
+const path = require("path");
 
 const app = express();
-const port = 3000;
 
-app.use(express.static(path.join(__dirname, 'public')));
+// Serve static files from /public
+app.use(express.static(path.join(__dirname, "public")));
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+// Optional root fallback (good practice)
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
+
+//  Only listen locally, NOT on Vercel
+if (require.main === module) {
+  const port = 3000;
+  app.listen(port, () => {
+    console.log(`Server running locally at http://localhost:${port}`);
+  });
+}
+
+module.exports = app;

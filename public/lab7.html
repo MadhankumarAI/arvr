@@ -10,8 +10,7 @@ function showShapes(position)
  {
 var currentLatitude = position.coords.latitude;
 var currentLongitude = position.coords.longitude;
-document.getElementById('currentLocation').innerHTML =
-`Latitude: ${currentLatitude}<br>Longitude: ${currentLongitude}`;
+
 
 
 var locations = [
@@ -44,6 +43,7 @@ getLocation();
 });</script>
 </head>
 <body><h3 id="currentLocation">Fetching location...</h3>
+<h1>Madhan Kumar R</h1>
 <a-scene><a-box id="box" position="0 0.5 -3" rotation="0 45 0" color="red" visible="false"></a-box>
 <a-torus id="torus" position="2 0.5 -3" radius="0.5" height="1.5" color="red" visible="false"></a-torus>
 <a-sphere id="sphere" position="-2 0.75 -3" radius="0.75" color="green" visible="false"></a-sphere>

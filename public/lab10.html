@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple A-Frame Scene</title>
+    <script src="aframe.min.js"></script>
+    <style>
+        /* Ensure the body takes full height */
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        /* Style the button to make it visible and positioned correctly */
+        button {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CC3D9;
+            border: none;
+            color: white;
+            z-index: 10;
+            /* Ensure it's above the scene */
+        }
+
+        /* Add hover effect for the button */
+        button:hover {
+            background-color: #3a9ca1;
+        }
+    </style>
+</head>
+
+<body>
+    <a-scene>
+        <a-assets>
+            <a-asset-item id="value" src="model/ironman_helmet.glb"></a-asset-item>
+        </a-assets>
+
+        <a-entity position="0 1.6 0">
+            <a-camera></a-camera>
+        </a-entity>
+
+        <a-entity id="model" gltf-model="#value" position="0 0 -5" rotation="0 45 0" scale="0.1 0.1 0.1"></a-entity>
+
+        <!-- Add lights -->
+        <a-light type="ambient" color="#ffffff" intensity="10.5"></a-light>
+        <a-light type="directional" color="#ffffff" intensity="1" position="-1 1 0"></a-light>
+
+    </a-scene>
+
+    <!-- Button to trigger rotation -->
+    <button onclick="rotateModel()">Rotate Model 45°</button>
+
+    <script>
+        // Function to rotate the model by 45 degrees each time
+        function rotateModel() {
+            const model = document.querySelector('#model');
+
+            // Get the current rotation object
+            const currentRotation = model.getAttribute('rotation');
+
+            // Update rotation
+            model.setAttribute('rotation', {
+                x: currentRotation.x,
+                y: currentRotation.y + 45,
+                z: currentRotation.z
+            });
+        }
+    </script>
+</body>
+
+</html>

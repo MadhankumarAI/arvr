@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marker Based AR - GLB Model</title>
+
+    <script src="aframe.min.js"></script>
+    <script src="mindar-image-aframe.prod.js"></script>
+
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <a-scene mindar-image="imageTargetSrc: ironman.mind;" vr-mode-ui="false" device-orientation-permission-ui="false">
+
+        <a-assets>
+            <a-asset-item id="ironman-model" src="model/ironman_helmet.glb"></a-asset-item>
+        </a-assets>
+
+        <a-camera position="0 0 6" look-controls="false"></a-camera>
+
+        <a-entity mindar-image-target="targetIndex: 0">
+            <a-entity gltf-model="#ironman-model" position="0 0 0" rotation="0 0 0" scale="0.01 0.01 0.01"
+                animation="property: rotation; to: 0 360 0; loop: true; dur: 3000">
+            </a-entity>
+        </a-entity>
+
+    </a-scene>
+
+</body>
+
+</html>

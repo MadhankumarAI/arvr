@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Marker Based AR</title>
+
+    <script src="aframe.min.js"></script>
+    <script src="mindar-image-aframe.prod.js"></script>
+
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Using targets.mind containing 3 different images -->
+    <a-scene mindar-image="imageTargetSrc: targets.mind;" vr-mode-ui="false" device-orientation-permission-ui="false">
+
+        <a-camera position="0 0 0" look-controls="false"></a-camera>
+
+        <!-- Target 1: Shows a spinning cylinder (Index 0) -->
+        <a-entity mindar-image-target="targetIndex: 0">
+            <a-cylinder radius="0.3" height="0.5" color="#00ffff" opacity="0.9"
+                animation="property: rotation; to: 0 360 0; loop: true; dur: 3000">
+            </a-cylinder>
+        </a-entity>
+
+        <!-- Target 2: Shows a pulsating box (Index 1) -->
+        <a-entity mindar-image-target="targetIndex: 1">
+            <a-box width="0.5" height="0.5" depth="0.5" color="#ffff00" opacity="0.9"
+                animation="property: scale; dir: alternate; to: 1.5 1.5 1.5; loop: true; dur: 1500">
+            </a-box>
+        </a-entity>
+
+        <!-- Target 3: Shows a bouncing sphere (Index 2) -->
+        <a-entity mindar-image-target="targetIndex: 2">
+            <a-sphere radius="0.4" color="#ff00ff" opacity="0.9"
+                animation="property: position; dir: alternate; to: 0 0.5 0; loop: true; dur: 1000">
+            </a-sphere>
+        </a-entity>
+
+    </a-scene>
+
+</body>
+
+</html>
